@@ -1,0 +1,109 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <title>Edytuj pozycję</title>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+                aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <a class="navbar-brand" href="/"><img src="https://megawrzuta.pl/files/8f1e792e67653ab6d36ac014f4af88ad.png" width="30" height="30" class="d-inline-block align-top" alt=""> Pharmacy Data Service</a>
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Start </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/allmedicines">Baza leków</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/allcategories">Kategorie leków</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/add">Dodaj lek</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/addcategory">Dodaj kategorię</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+</head>
+<body><br>
+<style type="text/css">
+    html {
+        background: url(https://image.ibb.co/ftrVQ0/background.jpg) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    body {
+        background-color: transparent;
+    }
+</style>
+
+<!--<div style="text-align: center;">-->
+
+<div style="text-align: center;"><h3 class="font-weight-light">Edytuj pozycję</h3></div>
+
+<form th:action="|/updateEdited/${id}|" th:object="${medicine}" method="post"
+      style="width: 300px;margin: auto">
+
+    <div class="form-group">
+        <label for="name">Nazwa leku</label>
+        <input type="text" class="form-control" id="name" th:field="*{name}" required>
+        <div class="invalid-feedback">Podaj nazwę</div>
+    </div>
+
+    <div class="form-group">
+        <label for="substance">Substancja aktywna</label>
+        <input type="text" class="form-control" id="substance" th:field="*{substance}" required>
+        <div class="invalid-feedback">Podaj substancję aktywną</div>
+    </div>
+
+    <div class="form-group">
+        <label for="substance">Kategoria</label>
+        <select class="custom-select" id="category" th:field="*{category}" required>
+            <option value="">Kliknij, aby wybrać kategorię</option>
+            <option value="1">Przeciwbólowe</option>
+            <option value="2">Serce</option>
+            <option value="3">Antybiotyki</option>
+
+        </select>
+        <div class="invalid-feedback">Wybierz kategorię</div>
+    </div>
+
+    <div class="form-group">
+        <label for="dose">Dawka leku</label>
+        <input type="text" class="form-control" id="dose" th:field="*{dose}" required>
+        <div class="invalid-feedback">Wprowadź dawkę leku</div>
+    </div>
+
+    <div class="form-group">
+        <label for="units">Liczba tabletek / pojemność [ml]</label>
+        <input type="text" class="form-control" id="units" th:field="*{units}" required>
+        <div class="invalid-feedback">Wprowadź liczbę tabletek / pojemność [ml]</div>
+    </div>
+
+
+    <div class="form-group">
+        <label for="packages">Liczba opakowań</label>
+        <input type="text" class="form-control" id="packages" th:field="*{packages}" required>
+        <div class="invalid-feedback">Wprowadź liczbę opakowań</div>
+    </div>
+    <div style="text-align: center">
+        <a href="/allmedicines">
+            <button type="button" class="btn btn-outline-primary">< Wróć</button>
+        </a>
+        <button type="submit" class="btn btn-primary">Zapisz zmiany</button>
+    </div>
+</form>
+
+</body>
+</html>
